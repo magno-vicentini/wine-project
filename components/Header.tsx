@@ -5,8 +5,8 @@ import { useState } from "react";
 import styles from '../styles/Header.module.css'
 import searchIconImage from '../public/headericons/search-icon.png'
 import userIconImage from '../public/headericons/user-icon.png'
+import wineCart from '../public/headericons/winebox.png'
 import wineImage from '../public/headericons/wine.svg'
-import headerIcons from '../public/headericons/header-sprite.svg'
 
 const Header: NextPage = () => {
   const [ searchIcon, setSearchIcon] = useState<boolean>(false)
@@ -44,22 +44,21 @@ const Header: NextPage = () => {
           src={ searchIconImage } 
           alt="ícone de procura" 
           onClick={() => changeButtonSearch()}
-          width={20}
-          height={20}
+          width={40}
+          height={40}
         />
         <Image 
           src={ userIconImage }
           alt="botão para configurações de usuário"
-          width={20}
-          height={20}
+          width={40}
+          height={40}
         />
-      </div>
-      <div className={ styles.cart_button}>
+        
         <Image 
-          src={ headerIcons } 
+          src={ wineCart } 
           alt="Winebox" 
-          className={ styles.cart_icon}
-          objectPosition="relative"
+          width={40}
+          height={40}
         />
       </div>
     </header>

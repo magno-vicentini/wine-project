@@ -1,5 +1,6 @@
 .container {
-  padding: 0 2rem;
+  display: flex;
+  padding: 0 10%;
 }
 
 .main {
@@ -15,6 +16,12 @@
 .products_container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.products_info {
+  display: flex;
+  flex-direction: column;
+  width: auto;
 }
 
 
