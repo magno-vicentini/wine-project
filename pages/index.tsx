@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import getProducts from '../services'
 import ProductCard from '../components/ProductCard'
 import { IProduct } from '../interfaces/IProduct'
+import Header from '../components/Header'
 
 const Home: NextPage = () => {
   const [products, setProducts] = useState<IProduct[]>()
@@ -28,9 +29,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <div>
-          <h1 className={styles.title}>
-            Welcome to <a href="https://nextjs.org">Next.js!</a>
-          </h1>
+          <Header />
           { !products ? '' : products.map((product) => {
             return (
               <ProductCard data={ product } key={ product.id }/>

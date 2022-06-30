@@ -16,10 +16,12 @@ const ProductCard: NextPage<IProductProps> = ({ data }) => {
       <h6>{ data.name }</h6>
       <div>
         <span>{ data.price }</span>
-        <span>{ data.discount }</span>
+        <span>{ data.discount }% OFF</span>
       </div>
-      <span>`Sócio Wine : ${ data.priceMember}`</span>
-      <span>`Não Socio : ${ data.priceNonMember}`</span>
+      <span>Sócio Wine :{ data.priceMember}</span>
+      <span>Não Socio :{ data.priceNonMember}</span>
+
+      <button type="button" className={ styles.button_add_product}>ADICIONAR</button>
     </div>
   )
 }
