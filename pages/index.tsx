@@ -9,10 +9,12 @@ import Header from '../components/Header'
 
 const Home: NextPage = () => {
   const [products, setProducts] = useState<IProduct[]>()
+  const [productsData, setProductsData] = useState<number>(0)
 
   async function fetchProducts() {
-    const fetch = await getProducts()
-    setProducts(fetch.items)
+    const fetchProducts = await getProducts()
+    setProductsData(fetchProducts.totalItems)
+    setProducts(fetchProducts.items)
   }
 
   useEffect( () => {
@@ -30,6 +32,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div>
           <Header />
+          <p>{ productsData } produtos encontrados</p>
           <div className={styles.products_container}>
             { !products ? '' : products.map((product) => {
               return (
