@@ -12,6 +12,11 @@
   align-items: center;
 }
 
+.products_container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .footer {
   display: flex;
   flex: 1;

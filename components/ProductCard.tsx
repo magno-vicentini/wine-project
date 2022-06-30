@@ -10,8 +10,8 @@ const ProductCard: NextPage<IProductProps> = ({ data }) => {
       <Image 
         src={ data.image }
         alt={ data.name } 
-        width={500}
-        height={500}
+        width={120}
+        height={120}
       />
       <h6>{ data.name }</h6>
       <div>

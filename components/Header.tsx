@@ -40,10 +40,14 @@ const Header: NextPage = () => {
         src={ searchIconImage } 
         alt="ícone de procura" 
         onClick={() => changeButtonSearch()}
+        width={20}
+        height={20}
       />
       <Image 
         src={ userIconImage }
         alt="botão para configurações de usuário"
+        width={20}
+        height={20}
       />
     </header>
   )

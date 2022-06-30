@@ -17,6 +17,14 @@ export interface IProduct {
   type: string
 }
 
+export interface IProductData {
+  items: IProduct[],
+  itemsPerPage: number,
+  page: number,
+  totalItems: number,
+  totalPages: number,
+}
+
 export interface IProductProps {
   data: IProduct
 }
