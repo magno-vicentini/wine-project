@@ -11,6 +11,7 @@ export function ProductProvider({ children }: Props) {
   const [numberOfProducts, setNumberOfProducts] = useState<number>(0)
   const [ productsData, setProductsData ] = useState<IProductData>()
   const [ typeFilter, setTypeFilter ] = useState<ITypeFilter>({})
+  const [ cartQuantity, setCartQuantity ] = useState<number>(0)
 
 
   
@@ -23,6 +24,8 @@ export function ProductProvider({ children }: Props) {
     setTypeFilter,
     numberOfProducts,
     setNumberOfProducts,
+    cartQuantity,
+    setCartQuantity,
   }
   return (
       <>

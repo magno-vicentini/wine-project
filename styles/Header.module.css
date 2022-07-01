@@ -21,7 +21,7 @@
 
 .cart_icon {
   left: -113px;
-  position: relative;
+  position: absolute;
 }
 
 .header_container a {
@@ -37,8 +37,26 @@
 .header_icons {
   display: flex;
   cursor: pointer;
+  position: relative;
 }
 
 .header_icons_container {
   display: flex;
+}
+
+.cart_quantity {
+  display: flex;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  top: 64.29%;
+}
+
+.cart_container {
+  position: relative;
 }

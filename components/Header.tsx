@@ -13,7 +13,13 @@ import { useProduct } from "../context/productsContext";
 const Header: NextPage = () => {
   const [searchIcon, setSearchIcon] = useState<boolean>(false)
   const [name, setName] = useState<string>('')
-  const { setProducts, setNumberOfProducts, setProductsData, setTypeFilter } = useProduct()
+  const { 
+      setProducts, 
+      setNumberOfProducts, 
+      setProductsData, 
+      setTypeFilter,
+      cartQuantity,
+    } = useProduct()
 
   function changeButtonSearch () {
     if(!searchIcon) return setSearchIcon(true)
@@ -37,7 +43,7 @@ const Header: NextPage = () => {
 
   useEffect(() => {
     setProductsByName()
-  }, [name])
+  }, [name, cartQuantity])
 
   return (
     <header className={ styles.header_container}>
@@ -77,14 +83,17 @@ const Header: NextPage = () => {
           alt="botão para configurações de usuário"
           width={40}
           height={40}
-        />        
-        <Image 
-          src={ wineCart } 
-          className={ styles.header_icons}
-          alt="Winebox" 
-          width={40}
-          height={40}
-        />
+        />     
+        <div className={ styles.cart_container}>
+          <Image 
+            src={ wineCart } 
+            className={ styles.header_icons}
+            alt="Winebox" 
+            width={40}
+            height={40}
+          />
+          <div className={ styles.cart_quantity }>{cartQuantity}</div>
+        </div>   
       </div>
     </header>
   )

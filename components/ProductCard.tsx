@@ -2,9 +2,21 @@ import { NextPage } from "next";
 import Image from "next/image";
 import styles from '../styles/Product.module.css'
 import { IProductProps } from "../interfaces/IProduct";
+import { useProduct } from "../context/productsContext";
 
 const ProductCard: NextPage<IProductProps> = ({ data }) => {
-  console.log('propss', data)
+  const { setCartQuantity } = useProduct()
+
+  function addToCart () {
+    if(!localStorage.getItem('cart')) {
+      return localStorage.setItem('cart', JSON.stringify([data]))
+    }else {
+      localStorage.setItem('cart', 
+        JSON.stringify([...JSON.parse(localStorage.getItem('cart') || ''), data]))
+    }
+    const cart = (JSON.parse(localStorage.getItem('cart') || '')).length
+    setCartQuantity(cart)
+  }
   return (
     <div className={ styles.product_card}>
       <div className={styles.product_info}>
@@ -30,7 +42,13 @@ const ProductCard: NextPage<IProductProps> = ({ data }) => {
 
       </div>
       
-      <button type="button" className={ styles.button_add_product}>ADICIONAR</button>
+      <button 
+        type="button" 
+        className={ styles.button_add_product}
+        onClick={ () => addToCart()}
+      >
+        ADICIONAR
+      </button>
 
     </div>
   )

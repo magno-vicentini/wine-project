@@ -13,6 +13,8 @@ type productsContexttype = {
   setTypeFilter: (obj: object) => void
   numberOfProducts: number
   setNumberOfProducts: (num: number) => void
+  cartQuantity: number
+  setCartQuantity: (num: number) => void
 }
 
 const pruductsContextDefaultValues: productsContexttype = {
@@ -24,6 +26,8 @@ const pruductsContextDefaultValues: productsContexttype = {
   setTypeFilter: () => {},
   numberOfProducts: 0,
   setNumberOfProducts: () => {},
+  cartQuantity: 0,
+  setCartQuantity: () => {}
 
 }
 
