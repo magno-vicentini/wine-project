@@ -14,13 +14,19 @@ const ProductCard: NextPage<IProductProps> = ({ data }) => {
           width={120}
           height={120}
         />
-        <h6>{ data.name }</h6>
-        <div>
-          <span>{ data.price }</span>
-          <span>{ data.discount }% OFF</span>
+        <h6 className={ styles.product_name}>{ data.name }</h6>
+        <div className={ styles.price_container}>
+          <span className={ styles.product_price }>{ data.price }</span>
+          <span className={ styles.discount_product}>{ data.discount }% OFF</span>
         </div>
-        <span>Sócio Wine :{ data.priceMember}</span>
-        <span>Não Socio :{ data.priceNonMember}</span>
+        <div className={ styles.price_mender_container}>
+          <span className={ styles.socio_wine}>Sócio Wine </span>
+          <div>
+            <span className= { styles.price_member}>R$</span>
+            <span className={ styles.price_member_focus}>{ data.priceMember}</span>
+          </div>
+        </div>
+        <span className= { styles.non_member}>Não Socio :{ data.priceNonMember}</span>
 
       </div>
       

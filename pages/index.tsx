@@ -45,7 +45,7 @@ const Home: NextPage = () => {
           <div className={ styles.container }>
             <FilterPrice />
             <div className={ styles.products_info}>
-              <p>{ numberOfProducts } produtos encontrados</p>
+              <p className={ styles.number_of_products }>{ numberOfProducts } produtos encontrados</p>
               <div className={styles.products_container}>
                 { !products ? '' : products.map((product) => {
                   return (

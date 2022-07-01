@@ -24,6 +24,16 @@
   width: auto;
 }
 
+.number_of_products {
+  display: flex;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: #262626;
+}
+
 
 @media (max-width: 600px) {
   
