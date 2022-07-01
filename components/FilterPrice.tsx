@@ -4,10 +4,11 @@ import { getProductsPerPrice } from "../services";
 import styles from '../styles/FilterPrice.module.css'
 
 const FilterPrice: NextPage = () => {
-  const { setProducts } = useProduct()
+  const { setProducts, setNumberOfProducts } = useProduct()
 
   async function changeFilter (filter: string) {
     const productsFiltered = await getProductsPerPrice(filter);
+    setNumberOfProducts(productsFiltered.totalItems)
     setProducts(productsFiltered.items)
   }
   return (

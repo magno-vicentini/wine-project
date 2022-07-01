@@ -24,8 +24,17 @@ async function getProductsPerPrice(price: string): Promise<IProductData> {
   return data;
 }
 
+async function getProductsByName(name: string): Promise<IProductData> {
+  const url = `https://wine-back-test.herokuapp.com/products?page=1&limit=9&name=${name}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
+
 export { 
   getProducts, 
   getProductsPerPage,
   getProductsPerPrice,
+  getProductsByName,
 }

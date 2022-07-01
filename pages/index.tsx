@@ -1,21 +1,19 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import styles from '../styles/Home.module.css'
 import { getProducts } from '../services'
 import ProductCard from '../components/ProductCard'
-import { IProduct } from '../interfaces/IProduct'
 import Header from '../components/Header'
 import FilterPrice from '../components/FilterPrice'
 import { useProduct } from '../context/productsContext'
 
 const Home: NextPage = () => {
-  const { products, setProducts } = useProduct()
-  const [productsData, setProductsData] = useState<number>(0)
+  const { products, setProducts, numberOfProducts, setNumberOfProducts } = useProduct()
 
   async function fetchProducts() {
     const fetchProducts = await getProducts()
-    setProductsData(fetchProducts.totalItems)
+    setNumberOfProducts(fetchProducts.totalItems)
     setProducts(fetchProducts.items)
   }
 
@@ -37,7 +35,7 @@ const Home: NextPage = () => {
           <div className={ styles.container }>
             <FilterPrice />
             <div className={ styles.products_info}>
-              <p>{ productsData } produtos encontrados</p>
+              <p>{ numberOfProducts } produtos encontrados</p>
               <div className={styles.products_container}>
                 { !products ? '' : products.map((product) => {
                   return (

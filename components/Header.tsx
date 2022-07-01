@@ -1,20 +1,39 @@
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from '../styles/Header.module.css'
 import searchIconImage from '../public/headericons/search-icon.png'
 import userIconImage from '../public/headericons/user-icon.png'
 import wineCart from '../public/headericons/winebox.png'
 import wineImage from '../public/headericons/wine.svg'
+import { getProducts, getProductsByName } from "../services";
+import { useProduct } from "../context/productsContext";
 
 const Header: NextPage = () => {
-  const [ searchIcon, setSearchIcon] = useState<boolean>(false)
+  const [searchIcon, setSearchIcon] = useState<boolean>(false)
+  const [name, setName] = useState<string>('')
+  const { setProducts, setNumberOfProducts } = useProduct()
 
   function changeButtonSearch () {
     if(!searchIcon) return setSearchIcon(true)
     return setSearchIcon(false)
   }
+
+  async function setProductsByName () {
+    if(name === '') {
+      const allProducts = await getProducts()
+      setProducts(allProducts.items)
+      setNumberOfProducts(allProducts.totalItems)
+    }
+    const filteredName = await getProductsByName(name)
+    setProducts(filteredName.items)
+    setNumberOfProducts(filteredName.totalItems)
+  }
+
+  useEffect(() => {
+    setProductsByName()
+  }, [name])
 
   return (
     <header className={ styles.header_container}>
@@ -38,7 +57,7 @@ const Header: NextPage = () => {
       </nav>
       <div className={ styles.header_icons_container }>
         {
-          !searchIcon ? '' : <input type="text" />
+          !searchIcon ? '' : <input type="text" onChange={ ({ target }) => setName(target.value)}  />
         }
         <Image 
           src={ searchIconImage } 

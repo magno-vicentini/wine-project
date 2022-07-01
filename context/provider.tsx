@@ -9,6 +9,7 @@ type Props = {
 
 export function ProductProvider({ children }: Props) {
   const [products, setProducts] = useState<IProduct[]>([])
+  const [numberOfProducts, setNumberOfProducts] = useState<number>(0)
 
   function getPageProducts(page: number) {
     getProductsPerPage(page)
@@ -20,6 +21,8 @@ export function ProductProvider({ children }: Props) {
   const value = {
     products,
     setProducts,
+    numberOfProducts,
+    setNumberOfProducts,
     getPageProducts,
     getFilterProducts,
   }
