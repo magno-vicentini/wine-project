@@ -7,9 +7,10 @@ import ProductCard from '../components/ProductCard'
 import { IProduct } from '../interfaces/IProduct'
 import Header from '../components/Header'
 import FilterPrice from '../components/FilterPrice'
+import { useProduct } from '../context/productsContext'
 
 const Home: NextPage = () => {
-  const [products, setProducts] = useState<IProduct[]>()
+  const { products, setProducts } = useProduct()
   const [productsData, setProductsData] = useState<number>(0)
 
   async function fetchProducts() {
@@ -44,6 +45,7 @@ const Home: NextPage = () => {
                   )
                 })}
               </div>
+              
             </div>
           </div>
         </div>

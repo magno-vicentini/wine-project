@@ -36,12 +36,13 @@ const Header: NextPage = () => {
           <a>Eventos</a>
         </Link>
       </nav>
-      <div>
+      <div className={ styles.header_icons_container }>
         {
           !searchIcon ? '' : <input type="text" />
         }
         <Image 
           src={ searchIconImage } 
+          className={ styles.header_icons}
           alt="ícone de procura" 
           onClick={() => changeButtonSearch()}
           width={40}
@@ -49,13 +50,14 @@ const Header: NextPage = () => {
         />
         <Image 
           src={ userIconImage }
+          className={ styles.header_icons}
           alt="botão para configurações de usuário"
           width={40}
           height={40}
-        />
-        
+        />        
         <Image 
           src={ wineCart } 
+          className={ styles.header_icons}
           alt="Winebox" 
           width={40}
           height={40}

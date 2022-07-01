@@ -32,3 +32,12 @@
 .header_container a:hover {
   color: #D14B8F;
 }
+
+.header_icons {
+  display: flex;
+  cursor: pointer;
+}
+
+.header_icons_container {
+  display: flex;
+}
