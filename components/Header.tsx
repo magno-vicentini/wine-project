@@ -13,7 +13,7 @@ import { useProduct } from "../context/productsContext";
 const Header: NextPage = () => {
   const [searchIcon, setSearchIcon] = useState<boolean>(false)
   const [name, setName] = useState<string>('')
-  const { setProducts, setNumberOfProducts } = useProduct()
+  const { setProducts, setNumberOfProducts, setProductsData, setTypeFilter } = useProduct()
 
   function changeButtonSearch () {
     if(!searchIcon) return setSearchIcon(true)
@@ -22,13 +22,17 @@ const Header: NextPage = () => {
 
   async function setProductsByName () {
     if(name === '') {
-      const allProducts = await getProducts()
+      const allProducts = await getProducts(1)
       setProducts(allProducts.items)
+      setProductsData(allProducts)
       setNumberOfProducts(allProducts.totalItems)
+      setTypeFilter({ type:'global', filter:'' })
     }
-    const filteredName = await getProductsByName(name)
+    const filteredName = await getProductsByName(1, name)
     setProducts(filteredName.items)
+    setProductsData(filteredName)
     setNumberOfProducts(filteredName.totalItems)
+    setTypeFilter({ type:'name', filter:name })
   }
 
   useEffect(() => {

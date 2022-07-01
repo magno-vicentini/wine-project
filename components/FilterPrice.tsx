@@ -4,12 +4,14 @@ import { getProductsPerPrice } from "../services";
 import styles from '../styles/FilterPrice.module.css'
 
 const FilterPrice: NextPage = () => {
-  const { setProducts, setNumberOfProducts } = useProduct()
+  const { setProducts, setNumberOfProducts, setProductsData, setTypeFilter } = useProduct()
 
   async function changeFilter (filter: string) {
-    const productsFiltered = await getProductsPerPrice(filter);
+    const productsFiltered = await getProductsPerPrice(1, filter);
     setNumberOfProducts(productsFiltered.totalItems)
     setProducts(productsFiltered.items)
+    setProductsData(productsFiltered)
+    setTypeFilter({ type:'price', filter })
   }
   return (
     <div className={ styles.filter_container}>

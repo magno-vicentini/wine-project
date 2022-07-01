@@ -1,7 +1,6 @@
 import { ReactNode, useState } from "react";
-import { IProduct } from "../interfaces/IProduct";
-import { getProductsPerPage, getProductsPerPrice } from "../services";
-import { ProductContext } from "./productsContext";
+import { IProduct, IProductData } from "../interfaces/IProduct";
+import { ITypeFilter, ProductContext } from "./productsContext";
 
 type Props = {
   children: ReactNode;
@@ -10,21 +9,20 @@ type Props = {
 export function ProductProvider({ children }: Props) {
   const [products, setProducts] = useState<IProduct[]>([])
   const [numberOfProducts, setNumberOfProducts] = useState<number>(0)
+  const [ productsData, setProductsData ] = useState<IProductData>()
+  const [ typeFilter, setTypeFilter ] = useState<ITypeFilter>({})
 
-  function getPageProducts(page: number) {
-    getProductsPerPage(page)
-  }
 
-  function getFilterProducts(filter: string) {
-    getProductsPerPrice(filter)
-  }
+  
   const value = {
     products,
     setProducts,
+    productsData,
+    setProductsData,
+    typeFilter,
+    setTypeFilter,
     numberOfProducts,
     setNumberOfProducts,
-    getPageProducts,
-    getFilterProducts,
   }
   return (
       <>

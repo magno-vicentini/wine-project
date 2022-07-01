@@ -1,0 +1,55 @@
+.buttons_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button_1 {
+  cursor: pointer;
+  width:38px;
+  height: 38px;
+  border: 1px solid #B6116E;
+  border-radius: 3px;
+  margin: 5px 8px;
+}
+
+.button_2 {
+  width:73px;
+  cursor: pointer;
+  height: 38px;
+  border: 1px solid #B6116E;
+  border-radius: 3px;
+}
+
+.button_3 {
+  width:38px;
+  cursor: pointer;
+  height: 38px;
+  border: 1px solid #B6116E;
+  border-radius: 3px;
+  margin: 5px 8px;
+}
+
+.button_next {
+  border: none;
+  cursor: pointer;
+  width: 60px;
+  height: 20px;
+  font-weight: 700;
+  font-size: 12px;
+  color: #B6116E;
+  background-color: transparent;
+}
+
+.button_select_pages {
+  appearance: unset;
+  font-size: large;
+  cursor: pointer;
+  border: none;
+  color: #B6116E;
+  background-color: transparent;
+}
+
+.selected_page {
+  background: #B6116E;
+}
+

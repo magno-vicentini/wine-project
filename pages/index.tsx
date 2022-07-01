@@ -7,14 +7,24 @@ import ProductCard from '../components/ProductCard'
 import Header from '../components/Header'
 import FilterPrice from '../components/FilterPrice'
 import { useProduct } from '../context/productsContext'
+import ButtonsPages from '../components/ButtonsPages'
 
 const Home: NextPage = () => {
-  const { products, setProducts, numberOfProducts, setNumberOfProducts } = useProduct()
+  const { 
+      products, 
+      setProducts, 
+      numberOfProducts, 
+      setNumberOfProducts,
+      setProductsData,
+      setTypeFilter
+    } = useProduct()
 
   async function fetchProducts() {
-    const fetchProducts = await getProducts()
+    const fetchProducts = await getProducts(1)
     setNumberOfProducts(fetchProducts.totalItems)
+    setProductsData(fetchProducts)
     setProducts(fetchProducts.items)
+    setTypeFilter({ type:'global', filter:'' })
   }
 
   useEffect( () => {
@@ -43,7 +53,7 @@ const Home: NextPage = () => {
                   )
                 })}
               </div>
-              
+              <ButtonsPages />
             </div>
           </div>
         </div>
