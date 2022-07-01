@@ -1,0 +1,133 @@
+.product_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+}
+
+.info_product {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 30%;
+}
+
+.product_name {
+  font-family: 'Neo Sans Std';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 32px;
+  color: #111111;
+}
+
+.product_place {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  font-feature-settings: 'liga' off;
+  color: #C81A78;
+}
+
+.product_place span {
+  margin-right: 10px;
+}
+
+.product_label {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  font-feature-settings: 'liga' off;
+  color: #555555;
+}
+
+.product_label span {
+  margin-right: 10px;
+}
+
+.price_member {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 27px;
+  color: #B6116E;
+}
+
+.price_member_focus {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  color: #B6116E;
+}
+
+.non_member {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-transform: uppercase;
+  color: #888888;
+}
+
+.sommelier_title {
+  font-family: 'Neo Sans Std';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  color: #111111;
+}
+
+.sommelier_comment {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #666666;
+}
+
+.button_add_product {
+  display: flex;
+  height: 39.36px;
+  color: #FFFFFF;
+  justify-content: space-around;
+  align-items: center;
+  background: #7EBC43;
+  border: none;
+  border-radius: 3.89354px;
+  box-shadow: 0px 0.973384px 1.94677px rgba(0, 0, 0, 0.2);
+  margin: 15px 0;
+  width: 100%;
+}
+
+.button_count {
+  cursor: pointer;
+  background-color: transparent;
+  color: #FFFFFF;
+  border: 1px solid white;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.button_add_cart {
+  background-color: transparent;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+}
