@@ -15,6 +15,7 @@ export interface IProduct {
   size: string;
   sommelierComment: string
   type: string
+  quantity?: number 
 }
 
 export interface IProductData {
