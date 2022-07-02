@@ -17,6 +17,10 @@
   padding: 11.6806px 23.3612px;
 }
 
+.product_image {
+  cursor: pointer;
+}
+
 .price_container {
   display: flex;
 }

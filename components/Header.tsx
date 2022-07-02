@@ -9,10 +9,12 @@ import wineCart from '../public/headericons/winebox.png'
 import wineImage from '../public/headericons/wine.svg'
 import { getProducts, getProductsByName } from "../services";
 import { useProduct } from "../context/productsContext";
+import { useRouter } from 'next/router'
 
 const Header: NextPage = () => {
   const [searchIcon, setSearchIcon] = useState<boolean>(false)
   const [name, setName] = useState<string>('')
+  const router = useRouter()
   const { 
       setProducts, 
       setNumberOfProducts, 
@@ -43,7 +45,7 @@ const Header: NextPage = () => {
 
   useEffect(() => {
     setProductsByName()
-  }, [name, cartQuantity])
+  }, [name])
 
   return (
     <header className={ styles.header_container}>
@@ -84,7 +86,11 @@ const Header: NextPage = () => {
           width={40}
           height={40}
         />     
-        <div className={ styles.cart_container}>
+        <div 
+          className={ styles.cart_container} 
+          onClick={() => router.push('/cart')}
+          data-test='button_cart'
+        >
           <Image 
             src={ wineCart } 
             className={ styles.header_icons}
