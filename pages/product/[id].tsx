@@ -3,17 +3,18 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Header from '../../components/Header'
-import { useProduct } from '../../context/productsContext'
 import { IProduct } from '../../interfaces/IProduct'
 import { getAllProducts } from '../../services'
 import styles from '../../styles/ProductInfo.module.css'
+import ReactStars from 'react-stars'
+import useCart from '../../hooks/useCart'
 
 const Product: NextPage = () => {
   const [ data, setData ] = useState<IProduct | undefined>()
   const [ count, setCount ] = useState<number>(0)
   const router = useRouter()
   const { id } = router.query
-  const { setCartQuantity } = useProduct()
+  const { addCountProducts } = useCart()
 
   async function fetchProducts() {
     const fetchAllProducts = await getAllProducts()
@@ -22,14 +23,8 @@ const Product: NextPage = () => {
   }
 
   function addToCart () {
-    if(!localStorage.getItem('cart')) {
-      return localStorage.setItem('cart', JSON.stringify([data]))
-    }else {
-      localStorage.setItem('cart', 
-        JSON.stringify([...JSON.parse(localStorage.getItem('cart') || ''), data]))
-    }
-    const cart = (JSON.parse(localStorage.getItem('cart') || '')).length
-    setCartQuantity(cart)
+    if(data === undefined) return 
+    addCountProducts(data, count)
   }
 
   useEffect(() => {
@@ -47,13 +42,15 @@ const Product: NextPage = () => {
             <Image 
               src={ data.image }
               alt={ data.name } 
-              width={500}
-              height={500}
+              width={381}
+              height={579}
             /> 
             <div className={ styles.info_product }>
               <div className={ styles.product_place }>
                 <span>Vinhos</span>
-                <span>{ data.country }</span>
+                <span>&#62;</span>
+                <span>{ data.country}</span>
+                <span>&#62;</span>
                 <span>{ data.region }</span>
               </div>
               <h1 className={ styles.product_name }>{ data.name }</h1>
@@ -68,6 +65,12 @@ const Product: NextPage = () => {
                 <span>{data.type}</span>
                 <span>{data.classification}</span>
                 <span>{data.size}</span>
+                <ReactStars
+                  count={ 5 }
+                  value={ data.rating}
+                  size={15}
+                  edit={ false }
+                />
                 <span>{data.rating}</span>
               </div>
               <div className={ styles.price_member }>
@@ -106,10 +109,8 @@ const Product: NextPage = () => {
               </div>
             </div>
           </div>
-          
           )
       }
-
     </div>
   )
 }

@@ -2,21 +2,16 @@ import { NextPage } from "next";
 import Image from "next/image";
 import styles from '../styles/Product.module.css'
 import { IProductProps } from "../interfaces/IProduct";
-import { useProduct } from "../context/productsContext";
 import Link from "next/link";
+import useCart from "../hooks/useCart";
 
 const ProductCard: NextPage<IProductProps> = ({ data }) => {
-  const { setCartQuantity } = useProduct()
+  const { addCountProducts, addProduct } = useCart()
 
-  function addToCart () {
-    if(!localStorage.getItem('cart')) {
-      return localStorage.setItem('cart', JSON.stringify([data]))
-    }else {
-      localStorage.setItem('cart', 
-        JSON.stringify([...JSON.parse(localStorage.getItem('cart') || ''), data]))
-    }
-    const cart = (JSON.parse(localStorage.getItem('cart') || '')).length
-    setCartQuantity(cart)
+  function addToCart (): void {
+    if(data === undefined) return 
+    addCountProducts(data, 1)
+    // addProduct(data)
   }
   return (
     <div className={ styles.product_card}>
@@ -24,7 +19,9 @@ const ProductCard: NextPage<IProductProps> = ({ data }) => {
         <Link href={`/product/${ data.id }`}>
           <Image 
             src={ data.image }
-            alt={ data.name } 
+            alt={ data.name }
+            data-test={ `product_${ data.id}`}
+            className= { styles.product_image} 
             width={120}
             height={120}
           /> 

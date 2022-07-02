@@ -4,7 +4,7 @@ async function getProducts(page: number): Promise<IProductData> {
   const url = `https://wine-back-test.herokuapp.com/products?page=${page}&limit=9`;
   const response = await fetch(url);
   const data = await response.json();
-  console.log(data);
+  console.log('allProductos', data);
   return data;
 }
 async function getAllProducts(): Promise<IProductData> {

@@ -9,30 +9,34 @@ const ButtonsPages: NextPage = () => {
   const [ page, setPage ] = useState(0)
 
   async function changePage (num: number) {
-    if(productsData?.totalPages !== undefined && productsData.totalPages < num) return
+    if(productsData?.totalPages !== undefined && productsData.totalPages < num) {
+      return setPage(productsData.page)
+    }
 
     if(typeFilter.type === "name" && typeFilter.filter !== undefined) {
       const fetchProductsName = await getProductsByName(num, typeFilter.filter)
       setProductsData(fetchProductsName)
-      setProducts(fetchProductsName.items)
-      return 
+      setPage(fetchProductsName.page)
+      return setProducts(fetchProductsName.items)
     }
     if(typeFilter.type === "price" && typeFilter.filter !== undefined) {
       const fetchProductsPrice = await getProductsPerPrice(num, typeFilter.filter)
       setProductsData(fetchProductsPrice)
-      setProducts(fetchProductsPrice.items)
-      return
+      setPage(fetchProductsPrice.page)
+      return setProducts(fetchProductsPrice.items)
     }
 
     const fetchProducts =  await getProducts(num)
     setProductsData(fetchProducts)
+    setPage(fetchProducts.page)
     return setProducts(fetchProducts.items)
   }
 
   useEffect(() => {
     if(productsData === undefined ) return setPage(0)
     setPage(productsData.page)
-  }, [productsData])
+  }, [])
+
   return (
     <div className={ styles.buttons_container}>
       <button 
@@ -81,6 +85,7 @@ const ButtonsPages: NextPage = () => {
       >
         Próximo 
       </button>
+      <span>&#187;</span>
     </div>
   )
 }
