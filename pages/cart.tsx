@@ -2,18 +2,21 @@ import { NextPage } from 'next'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import Header from '../components/Header'
+import useCart from '../hooks/useCart'
 import { IProduct } from '../interfaces/IProduct'
 import styles from '../styles/Cart.module.css'
 
 const Cart: NextPage = () => {
   const [ cart, setCart ] = useState<IProduct[] | []>([])
+  const { deleteProduct } = useCart()
 
-  function removeToCart() {
-    const allCart = JSON.parse(localStorage.getItem('cart') || '')
+  function removeToCart(product: IProduct) {
+    // const allCart = JSON.parse(localStorage.getItem('cart') || '')
+    deleteProduct(product)
   }
 
   useEffect(() => {
-    setCart(Object.values(JSON.parse(localStorage.getItem('cart') || '')))
+    setCart(Object.values(JSON.parse(localStorage.getItem('cart') || '[]')))
   }, [])
   
   return (
@@ -41,7 +44,7 @@ const Cart: NextPage = () => {
                     </div>
                     <button 
                       type="button" 
-                      onClick={ () => removeToCart()}
+                      onClick={ () => removeToCart(product)}
                     >
                       REMOVER
                     </button>

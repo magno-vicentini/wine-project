@@ -46,8 +46,11 @@ export default function useCart() {
     }
   }
 
-  function deleteProduct() {
-    
+  function deleteProduct(product: IProduct) {
+    console.log(product)
+    const deletedProduct = Object.values(cart).filter((e) => e !== product)
+    console.log(deletedProduct)
+    setCart({...deletedProduct})
   }
 
   function saveCartLocalStorage() {
@@ -56,6 +59,7 @@ export default function useCart() {
   }
   return {
     addProduct,
-    addCountProducts
+    addCountProducts,
+    deleteProduct,
   }
 }
