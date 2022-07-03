@@ -1,9 +1,11 @@
 import { createContext, useContext } from "react";
 import { IProduct, IProductData } from "../interfaces/IProduct"
+
  export interface ITypeFilter {
     type?: string;
     filter?: string;
  }
+ 
 type productsContexttype = {
   products: IProduct[] | [];
   setProducts: (IProduct: IProduct[]) => void;
