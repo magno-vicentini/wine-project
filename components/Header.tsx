@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -51,19 +52,19 @@ const Header: NextPage = () => {
     <header className={ styles.header_container}>
       <Image src={ wineImage } alt="Logo-wine" className={styles.logo_image}/>
       <nav>
-        <Link href="/clube">
+        <Link href="/club">
           <a>Clube</a>
         </Link>
         <Link href="/">
           <a>Loja</a>
         </Link>
-        <Link href="/produtores">
+        <Link href="/producers">
           <a>Produtores</a>
         </Link>
-        <Link href="/ofertas">
+        <Link href="/offers">
           <a>Ofertas</a>
         </Link>
-        <Link href="/eventos">
+        <Link href="/events">
           <a>Eventos</a>
         </Link>
       </nav>

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react"
 import { useProduct } from "../context/productsContext"
 import { IProduct } from "../interfaces/IProduct"
 
@@ -16,7 +17,6 @@ export default function useCart() {
 
   function updateLocalStorage() {
     localStorage.setItem('cart', JSON.stringify(cart))
-    console.log(cart)
   }
 
   function updateTotalItems(productCart: IProduct[]) {
@@ -29,8 +29,6 @@ export default function useCart() {
   }
 
   function addCountProducts (data: IProduct, count: number) {
-    console.log('cart aqui', cart)
-
     if(!cart) {
       return setCart({ ...cart, [ data.id ]: {...data, quantity: count} })
     } 
@@ -43,7 +41,6 @@ export default function useCart() {
   }
 
   function deleteProduct(product: IProduct) {
-    console.log(product)
     const allCart = {...cart}
     delete allCart[product.id]
     setCart(allCart)
