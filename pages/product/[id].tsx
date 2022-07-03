@@ -28,6 +28,7 @@ const Product: NextPage = () => {
   function addToCart () {
     if(data === undefined) return 
     addCountProducts(data, count)
+    setCount(0)
   }
 
   useEffect(() => {

@@ -8,9 +8,10 @@ import useCart from "../hooks/useCart";
 const ProductCard: NextPage<IProductProps> = ({ data }) => {
   const { addCountProducts } = useCart()
 
-  function addToCart (): void {
+  function addToCart (e: any): void {
     if(data === undefined) return 
     addCountProducts(data, 1)
+    e.target.classList.add('button_add_selected')
   }
   return (
     <div className={ styles.product_card}>
@@ -45,7 +46,7 @@ const ProductCard: NextPage<IProductProps> = ({ data }) => {
         type="button" 
         className={ styles.button_add_product}
         data-test={ `button_add_product_${ data.id }`}
-        onClick={ () => addToCart()}
+        onClick={ (e) => addToCart(e)}
       >
         ADICIONAR
       </button>
