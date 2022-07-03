@@ -1,24 +1,19 @@
 import { NextPage } from 'next'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import Header from '../components/Header'
+import { useProduct } from '../context/productsContext'
 import useCart from '../hooks/useCart'
 import { IProduct } from '../interfaces/IProduct'
 import styles from '../styles/Cart.module.css'
 
 const Cart: NextPage = () => {
-  const [ cart, setCart ] = useState<IProduct[] | []>([])
   const { deleteProduct } = useCart()
+  const { cart } = useProduct()
 
   function removeToCart(product: IProduct) {
-    // const allCart = JSON.parse(localStorage.getItem('cart') || '')
     deleteProduct(product)
   }
 
-  useEffect(() => {
-    setCart(Object.values(JSON.parse(localStorage.getItem('cart') || '[]')))
-  }, [])
-  
   return (
     <div>
       <Header />
@@ -27,7 +22,7 @@ const Cart: NextPage = () => {
           {
             (!cart) 
               ? <p>Você não adicionou nenhum produto no carrinho.</p> 
-              : cart.map((product: IProduct) => {
+              : Object.values(cart).map((product: any) => {
                 return (
                   <div key={ product.id } className={ styles.product_card }>
                     <Image 

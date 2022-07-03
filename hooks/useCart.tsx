@@ -28,23 +28,6 @@ export default function useCart() {
     setCartQuantity(quantityItems)
   }
 
-  function addProduct(data: IProduct) {
-    const product = cart
-    console.log(product)
-
-    if(!cart[data.id]) {
-      console.log('chegou aqui')
-      console.log('cart aqui', cart)
-      console.log(data)
-      console.log(JSON.parse(localStorage.getItem('cart') || ''))
-      setCart({ ...cart, [ data.id ]: {...data, quantity: 1} })
-    } else {
-      const quantity = product.quantity || 0
-      console.log(quantity)
-      setCart({ ...cart, [ data.id ]: {...data, quantity: quantity + 1} })
-    }
-  }
-
   function addCountProducts (data: IProduct, count: number) {
     console.log('cart aqui', cart)
 
@@ -57,14 +40,13 @@ export default function useCart() {
       const quantity = cart[data.id].quantity || 0
       setCart({ ...JSON.parse(localStorage.getItem('cart') || ''), [ data.id ]: {...data, quantity: quantity + count} })
     }
-    // updateTotalItems()
   }
 
   function deleteProduct(product: IProduct) {
     console.log(product)
-    const deletedProduct = Object.values(cart).filter((e) => e !== product)
-    console.log(deletedProduct)
-    setCart({...deletedProduct})
+    const allCart = {...cart}
+    delete allCart[product.id]
+    setCart(allCart)
   }
 
   function saveCartLocalStorage() {
@@ -75,7 +57,6 @@ export default function useCart() {
     }
   }
   return {
-    addProduct,
     addCountProducts,
     deleteProduct,
   }

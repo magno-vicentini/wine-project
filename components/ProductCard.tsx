@@ -6,12 +6,11 @@ import Link from "next/link";
 import useCart from "../hooks/useCart";
 
 const ProductCard: NextPage<IProductProps> = ({ data }) => {
-  const { addCountProducts, addProduct } = useCart()
+  const { addCountProducts } = useCart()
 
   function addToCart (): void {
     if(data === undefined) return 
     addCountProducts(data, 1)
-    // addProduct(data)
   }
   return (
     <div className={ styles.product_card}>
