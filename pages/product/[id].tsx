@@ -20,6 +20,7 @@ const Product: NextPage = () => {
     const fetchAllProducts = await getAllProducts()
     const productId = fetchAllProducts.items.find((e) => e.id === Number(id))
     setData(productId) 
+    localStorage.setItem('cart', '{}')
   }
 
   function addToCart () {

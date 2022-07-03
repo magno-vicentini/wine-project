@@ -15,6 +15,8 @@ type productsContexttype = {
   setNumberOfProducts: (num: number) => void
   cartQuantity: number
   setCartQuantity: (num: number) => void
+  cart: any
+  setCart: ( cart: any) => void
 }
 
 const pruductsContextDefaultValues: productsContexttype = {
@@ -27,7 +29,9 @@ const pruductsContextDefaultValues: productsContexttype = {
   numberOfProducts: 0,
   setNumberOfProducts: () => {},
   cartQuantity: 0,
-  setCartQuantity: () => {}
+  setCartQuantity: () => {},
+  cart: {},
+  setCart: () => {}
 
 }
 

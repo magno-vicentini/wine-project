@@ -17,7 +17,6 @@ const Home: NextPage = () => {
       setNumberOfProducts,
       setProductsData,
       setTypeFilter,
-      setCartQuantity
     } = useProduct()
 
   async function fetchProducts() {
@@ -28,14 +27,10 @@ const Home: NextPage = () => {
     setTypeFilter({ type:'global', filter:'' })
   }
 
-  // function getLocaStorage() {
-  //   // const cart = (JSON.parse(localStorage.getItem('cart') || '')).length
-  //   // setCartQuantity(cart)
-  // }
+ 
 
   useEffect( () => {
     fetchProducts()
-    // getLocaStorage()
   }, [])
 
   return (

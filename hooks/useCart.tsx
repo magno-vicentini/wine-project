@@ -3,26 +3,36 @@ import { useProduct } from "../context/productsContext"
 import { IProduct } from "../interfaces/IProduct"
 
 export default function useCart() {
-  const [ cart, setCart ] = useState<IProduct[]>(JSON.parse(localStorage.getItem('cart') || '{}'))
-  const { setCartQuantity } = useProduct()
+  const { setCartQuantity, cart, setCart  } = useProduct()
 
   useEffect(() => {
-      updateTotalItems(),
-      saveCartLocalStorage()
+    saveCartLocalStorage()
+  }, [])
+  
+  useEffect(() => {
+    updateLocalStorage()
+    updateTotalItems(cart)
   }, [cart])
 
-  function updateTotalItems() {
-    const quantityItems = Object.values(cart)
-      .reduce((acc: number, { quantity = 0}: IProduct ) => acc + quantity, 0 )
-    // console.log(quantityItems)
+  function updateLocalStorage() {
+    localStorage.setItem('cart', JSON.stringify(cart))
+    console.log(cart)
+  }
+
+  function updateTotalItems(productCart: IProduct[]) {
+    if(!productCart) {
+      return setCartQuantity(0)
+    }
+    const quantityItems = Object.values(productCart)
+      .reduce((acc: number , { quantity = 0}: IProduct ) => acc + quantity, 0 )
     setCartQuantity(quantityItems)
   }
 
   function addProduct(data: IProduct) {
-    const product = cart[data.id]
+    const product = cart
     console.log(product)
 
-    if(!product) {
+    if(!cart[data.id]) {
       console.log('chegou aqui')
       console.log('cart aqui', cart)
       console.log(data)
@@ -36,14 +46,18 @@ export default function useCart() {
   }
 
   function addCountProducts (data: IProduct, count: number) {
-    const product = cart[data.id]
+    console.log('cart aqui', cart)
 
-    if(!product) {
+    if(!cart) {
+      return setCart({ ...cart, [ data.id ]: {...data, quantity: count} })
+    } 
+    if(!cart[data.id]) {
       setCart({ ...cart, [ data.id ]: {...data, quantity: count} })
     } else {
-      const quantity = product.quantity || 0
+      const quantity = cart[data.id].quantity || 0
       setCart({ ...JSON.parse(localStorage.getItem('cart') || ''), [ data.id ]: {...data, quantity: quantity + count} })
     }
+    // updateTotalItems()
   }
 
   function deleteProduct(product: IProduct) {
@@ -54,8 +68,11 @@ export default function useCart() {
   }
 
   function saveCartLocalStorage() {
-    localStorage.setItem('cart', JSON.stringify(cart))
-    console.log(JSON.parse(localStorage.getItem('cart') || ''))
+    try {
+      setCart(JSON.parse(localStorage.getItem('cart') || '{}'))
+    } catch (err: any) {
+      console.log('Error: ', err.message);
+    }
   }
   return {
     addProduct,

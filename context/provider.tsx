@@ -12,7 +12,7 @@ export function ProductProvider({ children }: Props) {
   const [ productsData, setProductsData ] = useState<IProductData>()
   const [ typeFilter, setTypeFilter ] = useState<ITypeFilter>({})
   const [ cartQuantity, setCartQuantity ] = useState<number>(0)
-
+  const [ cart, setCart ] = useState<any>()
 
   
   const value = {
@@ -26,6 +26,8 @@ export function ProductProvider({ children }: Props) {
     setNumberOfProducts,
     cartQuantity,
     setCartQuantity,
+    cart,
+    setCart
   }
   return (
       <>
