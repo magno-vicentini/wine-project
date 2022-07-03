@@ -7,10 +7,6 @@ export default function useCart() {
   const { setCartQuantity, cart, setCart  } = useProduct()
 
   useEffect(() => {
-    saveCartLocalStorage()
-  }, [])
-  
-  useEffect(() => {
     updateLocalStorage()
     updateTotalItems(cart)
   }, [cart])
@@ -46,13 +42,6 @@ export default function useCart() {
     setCart(allCart)
   }
 
-  function saveCartLocalStorage() {
-    try {
-      setCart(JSON.parse(localStorage.getItem('cart') || '{}'))
-    } catch (err: any) {
-      console.log('Error: ', err.message);
-    }
-  }
   return {
     addCountProducts,
     deleteProduct,

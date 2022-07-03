@@ -18,6 +18,7 @@ const Home: NextPage = () => {
       setNumberOfProducts,
       setProductsData,
       setTypeFilter,
+      setCart,
     } = useProduct()
 
   async function fetchProducts() {
@@ -28,11 +29,18 @@ const Home: NextPage = () => {
     setTypeFilter({ type:'global', filter:'' })
   }
 
- 
-
   useEffect( () => {
     fetchProducts()
+    saveCartLocalStorage()
   }, [])
+
+  function saveCartLocalStorage() {
+    try {
+      setCart(JSON.parse(localStorage.getItem('cart') || '{}'))
+    } catch (err: any) {
+      console.log('Error: ', err.message);
+    }
+  }
 
   return (
     <div>
