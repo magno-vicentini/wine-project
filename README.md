@@ -6,7 +6,7 @@ First, install all dependencies with:
 npm install
 
 ```
-Sscond, run the development server:
+Second, run the development server:
 
 ```bash
 npm run dev
@@ -18,8 +18,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the pages . The page auto-updates as you edit the file.
 
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 ## Started with Docker
 
@@ -47,10 +45,11 @@ yarn dev
 Second start cypress:
 
 ```bash
-
 npm run cypress
 
 ```
+
+PS: You need the app running in port 3000 to use cypress
 
 
 ## Deploy on Vercel
@@ -58,5 +57,3 @@ npm run cypress
 Check deploy on Versel : [Project Wine Magno](https://wine-project-omega.vercel.app/)
 
 
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
