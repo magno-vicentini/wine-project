@@ -9,6 +9,7 @@ import { getAllProducts } from '../../services'
 import styles from '../../styles/ProductInfo.module.css'
 import ReactStars from 'react-stars'
 import useCart from '../../hooks/useCart'
+import Link from 'next/link'
 
 const Product: NextPage = () => {
   const [ data, setData ] = useState<IProduct | undefined>()
@@ -36,6 +37,12 @@ const Product: NextPage = () => {
   return (
     <div>
       <Header />
+      <div className={ styles.container_return }>
+        <span>&#60;</span>
+        <Link href="/">
+          <button className={ styles.button_return }>Voltar</button>
+        </Link>
+      </div>
       {
         (data === undefined) 
         ? '' 

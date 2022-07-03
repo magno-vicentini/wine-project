@@ -6,6 +6,25 @@
   padding: 5% 0;
 }
 
+.button_return {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: medium;
+  width: 40px;
+  height: 60px;
+  color: #C81A78;
+}
+
+.container_return {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #FFFFFF;
+  color: #C81A78;
+  padding: 0 20px;
+}
+
 .info_product {
   display: flex;
   flex-direction: column;

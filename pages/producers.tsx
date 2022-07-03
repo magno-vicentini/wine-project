@@ -1,9 +1,10 @@
 import { NextPage } from 'next'
+import NotFound from '../components/NotFound';
 
 const Producers: NextPage = () => {
   return (
-    <div>
-      Page Not Implemented
+    <div >
+      <NotFound />
     </div>
   )
 }

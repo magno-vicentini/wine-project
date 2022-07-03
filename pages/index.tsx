@@ -38,7 +38,7 @@ const Home: NextPage = () => {
     try {
       setCart(JSON.parse(localStorage.getItem('cart') || '{}'))
     } catch (err: any) {
-      console.log('Error: ', err.message);
+      return err
     }
   }
 

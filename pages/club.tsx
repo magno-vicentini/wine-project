@@ -1,9 +1,10 @@
 import { NextPage } from 'next'
+import NotFound from '../components/NotFound';
 
 const Club: NextPage = () => {
   return (
     <div>
-      Page Not Implemented
+      <NotFound />
     </div>
   )
 }
