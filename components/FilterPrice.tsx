@@ -19,11 +19,23 @@ const FilterPrice: NextPage = () => {
       <div className={ styles.filter_card }>
         <p>Por preço:</p>
         <label htmlFor="filter-price">
-          <input type="radio" name="filter-price" id="" onClick={ () => changeFilter('0-40')} />
+          <input 
+            type="radio" 
+            name="filter-price" 
+            id="" 
+            onClick={ () => changeFilter('0-40')} 
+            data-test="select_filter_0-40"
+          />
           Até R$40
         </label>
         <label htmlFor="filter-price">
-          <input type="radio" name="filter-price" id="" onClick={ () => changeFilter('40-60')} />
+          <input 
+            type="radio"
+            name="filter-price" 
+            id="" 
+            onClick={ () => changeFilter('40-60')} 
+            data-test="select_filter_40-60"
+          />
           R$40 A R$60
         </label>
         <label htmlFor="filter-price">
@@ -32,6 +44,7 @@ const FilterPrice: NextPage = () => {
             name="filter-price" 
             id="" 
             onClick={ () => changeFilter('100-200')} 
+            data-test="select_filter_100-200"
           />
           R$100 A R$200
         </label>
@@ -41,6 +54,7 @@ const FilterPrice: NextPage = () => {
             name="filter-price" 
             id="" 
             onClick={ () => changeFilter('200-500')} 
+            data-test="select_filter_200-500"
           />
           R$200 A R$500
         </label>
@@ -49,7 +63,8 @@ const FilterPrice: NextPage = () => {
             type="radio" 
             name="filter-price" 
             id="" 
-            onClick={ () => changeFilter('500-10000')} 
+            onClick={ () => changeFilter('500-1000')} 
+            data-test="select_filter_500-1000"
           />
           Acima de R$500
         </label>

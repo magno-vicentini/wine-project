@@ -39,6 +39,7 @@ const Cart: NextPage = () => {
                     </div>
                     <button 
                       type="button" 
+                      data-test={`button_remove_product_${product.id}`}
                       onClick={ () => removeToCart(product)}
                     >
                       REMOVER

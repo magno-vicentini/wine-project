@@ -70,11 +70,18 @@ const Header: NextPage = () => {
       </nav>
       <div className={ styles.header_icons_container }>
         {
-          !searchIcon ? '' : <input type="text" onChange={ ({ target }) => setName(target.value)}  />
+          !searchIcon ? '' : (
+            <input 
+              type="text" 
+              onChange={ ({ target }) => setName(target.value)}
+              data-test="input_filter_name"
+            />
+          )
         }
         <Image 
           src={ searchIconImage } 
           className={ styles.header_icons}
+          data-test="icon_filter_name"
           alt="ícone de procura" 
           onClick={() => changeButtonSearch()}
           width={40}
@@ -99,7 +106,12 @@ const Header: NextPage = () => {
             width={40}
             height={40}
           />
-          <div className={ styles.cart_quantity }>{cartQuantity}</div>
+          <div 
+            className={ styles.cart_quantity }
+            data-test="quantity_cart"
+          >
+            {cartQuantity}
+          </div>
         </div>   
       </div>
     </header>

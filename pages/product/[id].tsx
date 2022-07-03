@@ -87,6 +87,7 @@ const Product: NextPage = () => {
                 <button
                   type="button" 
                   className={ styles.button_count }
+                  data-test="button_sub_quantity"
                   onClick={ () => !count ? count : setCount(count - 1)}
                 >
                   -
@@ -96,6 +97,7 @@ const Product: NextPage = () => {
                   type="button" 
                   className={ styles.button_count }
                   onClick={ () => setCount(count + 1)}
+                  data-test="button_add_quantity"
                 >
                   +
                 </button>
@@ -104,6 +106,7 @@ const Product: NextPage = () => {
                   type="button" 
                   className={ styles.button_add_cart }
                   onClick={ () => addToCart()}
+                  data-test="button_add_product"
                 >
                   ADICIONAR
                 </button>

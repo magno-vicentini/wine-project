@@ -44,6 +44,7 @@ const ProductCard: NextPage<IProductProps> = ({ data }) => {
       <button 
         type="button" 
         className={ styles.button_add_product}
+        data-test={ `button_add_product_${ data.id }`}
         onClick={ () => addToCart()}
       >
         ADICIONAR

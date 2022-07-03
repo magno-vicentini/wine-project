@@ -42,6 +42,7 @@ const ButtonsPages: NextPage = () => {
     <div className={ styles.buttons_container}>
       <button 
         type="button" 
+        data-test='button_change_page_1'
         onClick={ () => {changePage(( page <= 2) ? 1 : page - 1)}}
         className={ styles.button_1 }
       >
@@ -50,6 +51,7 @@ const ButtonsPages: NextPage = () => {
       }</button>
       <button 
         type="button"
+        data-test='button_change_page_2'
         onClick={ () => {changePage(( page <= 2) ? 2 : page )}}
         className={ styles.button_2 }
       >{
@@ -57,6 +59,7 @@ const ButtonsPages: NextPage = () => {
       }</button>
       <button 
         type="button"
+        data-test='button_change_page_3'
         onClick={ () => changePage(( page <= 2) ? 3 : page + 1)}
         className={ styles.button_3}
       >{
